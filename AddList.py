@@ -1,0 +1,52 @@
+n=int(input())
+for y in range(n):
+    list1=input().split()
+    list2=input().split()
+    list3=[]
+    len1=min(len(list1),len(list2))
+    len2=max(len(list1),len(list2))
+    carry=0
+    temps=0
+    for x in range(len1):
+        temps=int(list1[x])+int(list2[x])+carry
+        if(temps<10):
+            list3.append(temps)
+            carry=0
+        else:
+            list3.append(temps%10)
+            carry=temps//10
+    x=len1
+    if(len(list1)>len(list2)):
+        while(x<len2):
+            #print(int(list1[x]))
+            temps=int(list1[x])+carry
+            if(temps<10):
+                list3.append(temps)
+                carry=0
+            else:
+                list3.append(temps%10)
+                if(temps==10):
+                    carry=1
+                else:
+                    carry=temps//10
+            x=x+1
+        #print(list3)
+    else:
+        while(x<len2):
+            temps=int(list2[x])+carry
+            if(temps<10):
+                list3.append(temps)
+                carry=0
+            else:
+                list3.append(temps%10)
+                if(temps==10):
+                    carry=1
+                else:
+                    carry=temps//10
+            x=x+1
+    if(carry!=0):
+        list3.append(carry)
+    #print(list3)       
+    for x in range(len(list3)-1):
+        print(list3[x],end="")
+    print(list3[len(list3)-1])
